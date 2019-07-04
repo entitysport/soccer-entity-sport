@@ -123,6 +123,8 @@ class Entity
                 $return_error->response = 'Server side error. Internal server error, unable to process your request';
             }elseif($response['http_code']==304){
                 $return_error->response = 'API request valid, but data was not modified since last accessed (compared using Etag)';
+            }elseif($response['http_code']==403){
+                $return_error->response = 'This endpoint will be accessible only on paid plan.';
             }
 
             return $return_error;
